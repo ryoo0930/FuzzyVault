@@ -48,18 +48,28 @@ def unlock(vault, secret_key, B, threshold = 40):
 #===============TEST========================================================
 A = set(range(100))
 B = set(random.sample(list(A), 50))
-C = set(random.sample(range(1000, 2000), 40))
+C = set(random.sample(list(A), 50))
+C.update(random.sample(range(1000, 2000), 20)) 
+D = set(random.sample(range(1000, 2000), 40))
 vault = lock("secret_key", A, 500)
 
 print("Vault Unlocking B with same secret key...")
-if unlock(vault, "secret_key", B): print("Vault unlocked.")
-else: print("You can't unlock vault.")
+if unlock(vault, "secret_key", B): print("Vault unlocked.\n")
+else: print("You can't unlock vault.\n")
 
 print("Vault Unlocking B with different secret key...")
-if unlock(vault, "secret_key2", B): print("Vault unlocked.")
-else: print("You can't unlock vault.")
+if unlock(vault, "secret_key2", B): print("Vault unlocked.\n")
+else: print("You can't unlock vault.\n")
 
 print("Vault Unlocking C with same secret key...")
-if unlock(vault, "secret_key", C): print("Vault unlocked.")
-else: print("You can't unlock vault.")
+if unlock(vault, "secret_key", C): print("Vault unlocked.\n")
+else: print("You can't unlock vault.\n")
+
+print("Vault Unlocking C with different secret key...")
+if unlock(vault, "secret_key2", C): print("Vault unlocked.\n")
+else: print("You can't unlock vault.\n")
+
+print("Vault Unlocking D with same secret key...")
+if unlock(vault, "secret_key", D): print("Vault unlocked.\n")
+else: print("You can't unlock vault.\n")
 #===========================================================================
